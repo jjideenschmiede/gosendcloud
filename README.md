@@ -19,8 +19,8 @@ If a new dispatch note is to be created, then this can be done directly with the
 ```go
 // Define request
 r := gosendcloud.Request{
-    publicKey: "",
-    secretKey: "",
+    PublicKey: "",
+    SecretKey: "",
 }
 
 // Define request body

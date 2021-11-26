@@ -31,8 +31,8 @@ type Config struct {
 
 // Request is to define the request data
 type Request struct {
-	publicKey string
-	secretKey string
+	PublicKey string
+	SecretKey string
 }
 
 // Send is to send a new request
@@ -42,7 +42,7 @@ func (c Config) Send(r Request) (*http.Response, error) {
 	url := transferProtocol + baseUrl + apiVersion + c.Path
 
 	// Create basic authentication
-	auth := "Basic " + base64.StdEncoding.EncodeToString([]byte(r.publicKey+":"+r.secretKey))
+	auth := "Basic " + base64.StdEncoding.EncodeToString([]byte(r.PublicKey+":"+r.SecretKey))
 
 	// Define client
 	client := &http.Client{}
