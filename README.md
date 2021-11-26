@@ -18,14 +18,14 @@ If a new dispatch note is to be created, then this can be done directly with the
 
 ```go
 // Define request
-r := Request{
+r := gosendcloud.Request{
     publicKey: "",
     secretKey: "",
 }
 
 // Define request body
-body := CreateAParcelBody{
-    Parcel: CreateAParcelBodyParcel{
+body := gosendcloud.CreateAParcelBody{
+    Parcel: gosendcloud.CreateAParcelBodyParcel{
         Name:         "Jonas Kwiedor",
         CompanyName:  "J&J Ideenschmiede GmbH",
         Address:      "Mercatorstraße",
@@ -36,7 +36,7 @@ body := CreateAParcelBody{
         RequestLabel: true,
         Email:        "info@jj-ideenschmiede.de",
         Country:      "DE",
-        Shipment: CreateAParcelBodyShipment{
+        Shipment: gosendcloud.CreateAParcelBodyShipment{
             Id: 8,
         },
         Weight:                     "10.000",
@@ -50,7 +50,7 @@ body := CreateAParcelBody{
 }
 
 // Create a new parcel
-create, err := CreateAParcel(body, r)
+create, err := gosendcloud.CreateAParcel(body, r)
 if err != nil {
     log.Fatalln(err)
 } else {
