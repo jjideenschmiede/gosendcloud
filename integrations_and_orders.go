@@ -14,7 +14,6 @@ package gosendcloud
 import (
 	"encoding/json"
 	"fmt"
-	"io"
 )
 
 // InsertingShipmentsBody is to structure the data
@@ -39,7 +38,7 @@ type InsertingShipmentsBody struct {
 	PaymentStatus              *InsertingShipmentsBodyPaymentStatus   `json:"payment_status"`
 	PostalCode                 string                                 `json:"postal_code"`
 	SenderAddress              int                                    `json:"sender_address,omitempty"`
-	ShippingMethod             int                                    `json:"shipping_method,omitempty"`
+	ShippingMethod             *int                                   `json:"shipping_method,omitempty"`
 	ShippingMethodCheckoutName string                                 `json:"shipping_method_checkout_name"`
 	Telephone                  string                                 `json:"telephone"`
 	ToPostNumber               string                                 `json:"to_post_number"`
@@ -261,11 +260,6 @@ func InsertingShipments(id int, body []InsertingShipmentsBody, r Request) ([]Ins
 
 	// Close request
 	defer response.Body.Close()
-
-	// DELETE //
-	read, _ := io.ReadAll(response.Body)
-	fmt.Println(string(read))
-	// DELETE //
 
 	// Decode data
 	var decode []InsertingShipmentsReturn
