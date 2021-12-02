@@ -14,6 +14,7 @@ package gosendcloud
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 )
 
 // InsertingShipmentsBody is to structure the data
@@ -260,6 +261,11 @@ func InsertingShipments(id int, body []InsertingShipmentsBody, r Request) ([]Ins
 
 	// Close request
 	defer response.Body.Close()
+
+	// DELETE //
+	read, _ := io.ReadAll(response.Body)
+	fmt.Println(string(read))
+	// DELETE //
 
 	// Decode data
 	var decode []InsertingShipmentsReturn
