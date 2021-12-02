@@ -57,3 +57,82 @@ if err != nil {
     log.Println(create)
 }
 ```
+
+### Inserting shipments into an integration
+
+If you want to create an order via an integration, then you can do this as follows. You can find more information about the structure of the request in the [sendcloud documentation](https://docs.sendcloud.sc/api/v2/shipping/#inserting-shipments-into-an-integration).
+
+```go
+// Define request
+r := gosendcloud.Request{
+    PublicKey: "",
+    SecretKey: "",
+}
+
+// Define request body
+var body []InsertingShipmentsBody
+
+body = append(body, InsertingShipmentsBody{
+    Address:             "Insulindelaan",
+    Address2:            "",
+    City:                "Eindhoven",
+    CompanyName:         "Sendcloud",
+    Country:             "NL",
+    CreatedAt:           "2021-12-02T10:00:00.555309+00:00",
+    Currency:            "EUR",
+    CustomsInvoiceNr:    "",
+    CustomsShipmentType: nil,
+    Email:               "info@jj-development.de",
+    ExternalOrderId:     "1234521226",
+    ExternalShipmentId:  nil,
+    HouseNumber:         "115",
+    Name:                "Kwiedor",
+    OrderNumber:         "414124124214214",
+    OrderStatus: &InsertingShipmentsBodyOrderStatus{
+        Id:      "fulfilled",
+        Message: "Fulfilled",
+    },
+    ParcelItems: []InsertingShipmentsBodyParcelItems{},
+    PaymentStatus: &InsertingShipmentsBodyPaymentStatus{
+        Id:      "paid",
+        Message: "Paid",
+    },
+    PostalCode:                 "5642 CV",
+    SenderAddress:              1,
+    ShippingMethod:             111,
+    ShippingMethodCheckoutName: "DPD Classic",
+    Telephone:                  "+31612345678",
+    ToPostNumber:               "",
+    ToServicePoint:             nil,
+    ToState:                    nil,
+    TotalOrderValue:            "13.99",
+    UpdatedAt:                  "2021-12-02T11:01:47.505309+00:00",
+    Weight:                     "0.300",
+    Width:                      "40.00",
+    Height:                     "30.00",
+    Length:                     "50.00",
+    Shipments:                  nil,
+    CheckoutPayload:            nil,
+})
+
+// Add a parcel item
+    body[0].ParcelItems = append(body[0].ParcelItems, InsertingShipmentsBodyParcelItems{
+    Description:   "T-Shirt",
+    HsCode:        "",
+    OriginCountry: "",
+    ProductId:     "a_random_id",
+    Properties:    map[string]interface{}{},
+    Quantity:      2,
+    Sku:           "a_random_sku",
+    Value:         "300",
+    Weight:        "0.300",
+})
+
+// Inserting a new shipment
+insert, err := InsertingShipments(198416, body, r)
+if err != nil {
+    log.Fatalln(err)
+} else {
+    log.Println(insert)
+}
+```
