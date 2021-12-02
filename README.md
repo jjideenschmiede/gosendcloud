@@ -70,9 +70,9 @@ r := gosendcloud.Request{
 }
 
 // Define request body
-var body []InsertingShipmentsBody
+var body []gosendcloud.InsertingShipmentsBody
 
-body = append(body, InsertingShipmentsBody{
+body = append(body, gosendcloud.InsertingShipmentsBody{
     Address:             "Insulindelaan",
     Address2:            "",
     City:                "Eindhoven",
@@ -88,12 +88,12 @@ body = append(body, InsertingShipmentsBody{
     HouseNumber:         "115",
     Name:                "Kwiedor",
     OrderNumber:         "414124124214214",
-    OrderStatus: &InsertingShipmentsBodyOrderStatus{
+    OrderStatus: &gosendcloud.InsertingShipmentsBodyOrderStatus{
         Id:      "fulfilled",
         Message: "Fulfilled",
     },
-    ParcelItems: []InsertingShipmentsBodyParcelItems{},
-    PaymentStatus: &InsertingShipmentsBodyPaymentStatus{
+    ParcelItems: []gosendcloud.InsertingShipmentsBodyParcelItems{},
+    PaymentStatus: &gosendcloud.InsertingShipmentsBodyPaymentStatus{
         Id:      "paid",
         Message: "Paid",
     },
@@ -116,7 +116,7 @@ body = append(body, InsertingShipmentsBody{
 })
 
 // Add a parcel item
-    body[0].ParcelItems = append(body[0].ParcelItems, InsertingShipmentsBodyParcelItems{
+body[0].ParcelItems = append(body[0].ParcelItems, gosendcloud.InsertingShipmentsBodyParcelItems{
     Description:   "T-Shirt",
     HsCode:        "",
     OriginCountry: "",
@@ -129,7 +129,7 @@ body = append(body, InsertingShipmentsBody{
 })
 
 // Inserting a new shipment
-insert, err := InsertingShipments(198416, body, r)
+insert, err := gosendcloud.InsertingShipments(198416, body, r)
 if err != nil {
     log.Fatalln(err)
 } else {
