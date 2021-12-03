@@ -14,6 +14,7 @@ package gosendcloud
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // InsertingShipmentsBody is to structure the data
@@ -118,8 +119,30 @@ type InsertingShipmentsReturn struct {
 	} `json:"error,omitempty"`
 }
 
-// InsertingShipmentsWebhookReturn is to decode the json data
-type InsertingShipmentsWebhookReturn struct {
+// InsertingShipmentsIntegrationWebhookReturn is to decode the json data
+type InsertingShipmentsIntegrationWebhookReturn struct {
+	Action        string `json:"action"`
+	Timestamp     int64  `json:"timestamp"`
+	PublicKey     string `json:"public_key"`
+	SecretKey     string `json:"secret_key"`
+	IntegrationId int    `json:"integration_id"`
+	Integration   struct {
+		Id                   int           `json:"id"`
+		ShopName             string        `json:"shop_name"`
+		ShopUrl              string        `json:"shop_url"`
+		System               string        `json:"system"`
+		FailingSince         interface{}   `json:"failing_since"`
+		LastFetch            interface{}   `json:"last_fetch"`
+		LastUpdatedAt        time.Time     `json:"last_updated_at"`
+		ServicePointEnabled  bool          `json:"service_point_enabled"`
+		ServicePointCarriers []interface{} `json:"service_point_carriers"`
+		WebhookActive        bool          `json:"webhook_active"`
+		WebhookUrl           string        `json:"webhook_url"`
+	} `json:"integration"`
+}
+
+// InsertingShipmentsParcelStatusWebhookReturn is to decode the json data
+type InsertingShipmentsParcelStatusWebhookReturn struct {
 	Action string `json:"action"`
 	Parcel struct {
 		Id             int    `json:"id"`
