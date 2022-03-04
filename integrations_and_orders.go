@@ -27,7 +27,7 @@ type InsertingShipmentsBody struct {
 	CreatedAt                  string                                 `json:"created_at"`
 	Currency                   string                                 `json:"currency"`
 	CustomsInvoiceNr           string                                 `json:"customs_invoice_nr"`
-	CustomsShipmentType        interface{}                            `json:"customs_shipment_type"`
+	CustomsShipmentType        int                                    `json:"customs_shipment_type"`
 	Email                      string                                 `json:"email"`
 	ExternalOrderId            string                                 `json:"external_order_id"`
 	ExternalShipmentId         *string                                `json:"external_shipment_id"`

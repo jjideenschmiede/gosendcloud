@@ -81,7 +81,7 @@ body = append(body, gosendcloud.InsertingShipmentsBody{
     CreatedAt:           "2021-12-02T10:00:00.555309+00:00",
     Currency:            "EUR",
     CustomsInvoiceNr:    "",
-    CustomsShipmentType: nil,
+    CustomsShipmentType: 2,
     Email:               "info@jj-development.de",
     ExternalOrderId:     "1234521226",
     ExternalShipmentId:  nil,
