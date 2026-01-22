@@ -185,8 +185,8 @@ type InsertingShipmentsParcelStatusWebhookReturn struct {
 		CustomsDeclaration struct {
 		} `json:"customs_declaration"`
 		OrderNumber         string      `json:"order_number"`
-		InsuredValue        int         `json:"insured_value"`
-		TotalInsuredValue   int         `json:"total_insured_value"`
+		InsuredValue        float64     `json:"insured_value"`
+		TotalInsuredValue   float64     `json:"total_insured_value"`
 		ToState             interface{} `json:"to_state"`
 		CustomsInvoiceNr    string      `json:"customs_invoice_nr"`
 		CustomsShipmentType interface{} `json:"customs_shipment_type"`
